@@ -66,7 +66,8 @@ def menu():
                     taille_fichier_demander = requests.get(video_url, stream=True)
                     taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
                     taille_qualite = 1024 
-                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    temps_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+		    #nom_fichier = raw_input("\033[1;97mEntrer un nom pour enregistrer\033[1;91m : \033[1;95m")
                     t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
                     with open(nom_fichier + '.mp4', 'wb') as f:
                         for data in taille_fichier_demander.iter_content(taille_qualite):
@@ -82,7 +83,7 @@ def menu():
                     taille_fichier_demander = requests.get(video_url, stream=True)
                     taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
                     taille_qualite = 1024 
-                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    temps_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
                     t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
                     with open(nom_fichier + '.mp4', 'wb') as f:
                         for data in taille_fichier_demander.iter_content(taille_qualite):
@@ -106,7 +107,7 @@ def menu():
                     taille_fichier_demander = requests.get(video_url, stream=True)
                     taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
                     taille_qualite = 1024 
-                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    temps_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
                     t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
                     with open(nom_fichier + '.mp4', 'wb') as f:
                         for data in taille_fichier_demander.iter_content(taille_qualite):
@@ -134,7 +135,7 @@ def menu():
                     taille_fichier_demander = requests.get(video_url, stream=True)
                     taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
                     taille_qualite = 1024 
-                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    #nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
                     t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
                     with open(nom_fichier + '.mp4', 'wb') as f:
                         for data in taille_fichier_demander.iter_content(taille_qualite):
@@ -150,7 +151,8 @@ def menu():
 
 try:
     while True:
-        url = raw_input("\n\033[1;97mEntrez l'URL de la vidéo Facebook\033[1;91m :\033[1;93m ")
+        url = raw_input("\n\033[1;97mEntrez l'URL de la vidéo Facebook\033[1;91m : \033[1;93m")
+	nom_fichier = raw_input("\n\033[1;97mEntrer un nom pour enregistrer\033[1;91m : \033[1;95m")
         x = re.match(r'^(https:|)[/][/]www.([^/]+[.])*facebook.com', url)
 
         if x:
