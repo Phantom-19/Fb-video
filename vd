@@ -1,4 +1,4 @@
-#!usr/bin/python3.8
+#!usr/bin/python2
 #coding=utf-8
 
 #Auteur: Faxel
@@ -10,7 +10,7 @@ import os,sys,time,datetime,random,hashlib,re,threading,json,requests
 from datetime import datetime
 from tqdm import tqdm
 from time import sleep   
-raw_input=input
+
 
 # -Automatisation-#
 def Street(z):
