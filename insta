@@ -1,0 +1,178 @@
+#!usr/bin/python2
+#coding=utf-8
+
+#Auteur: Faxel
+#Contact: t.me/Faxelh
+# Le credit pour ce code va a Mr Faxel
+# Si vous voulez prendre Le credit pour ce code Voyez Faster Axel.
+
+import os,sys,time,datetime,random,hashlib,re,threading,json,requests
+from datetime import datetime
+from tqdm import tqdm
+from time import sleep   
+
+
+# -Automatisation-#
+def Street(z):
+    for e in z + '\n':
+        sys.stdout.write(e)
+        sys.stdout.flush()
+        time.sleep(0.009)
+
+logo = ("""\033[1;91m _____ __   _ _______ _______  033[1;96m_    _ _____ ______ \n\033[1;91m   |   | \  | |______    |     033[1;96m \  /    |   |     \\n\033[1;91m __|__ |  \_| ______|    |     033[1;96m  \/   __|__ |_____/\n\t[38;5;214m╔═╗╔═\033[1;97m╗═╗ ╦\033[1;92m╔═╗╦  \n\t[38;5;214m╠╣ ╠═\033[1;97m╣╔╩╦╝\033[1;92m║╣ ║  \n\t[38;5;214m╚  ╩ \033[1;97m╩╩ ╚═\033[1;92m╚═╝╩═╝\n\t\033[1;91m[[38;5;214mFaxel\033[1;91m][38;5;214m🇨🇮 \033[1;97mI'm the person whom you can never judge.\033[1;92m 🇨🇮""")
+
+print(logo)
+#J'ai obtenu ça de https://stackoverflow.com/a/24460981
+def connection(url='http://www.google.com/', timeout=5):
+    try:
+        req = requests.get(url, timeout=timeout)
+        req.raise_for_status()
+        print("\033[1;92mVous êtes connecté à Internet\n")
+        return True
+    except requests.HTTPError as e:
+        print("Checking internet connection failed, status code {0}.".format(
+        e.response.status_code))
+    except requests.ConnectionError:
+        print("\033[1;91mVous n'êtes pas connecté à Internet.")
+    return False
+
+#Fonction pour télécharger une photo ou une vidéo Instagram
+def telecharger_image_video():
+
+    url = raw_input("\n\033[1;91m[\033[1;36m▶\033[1;91m] Veuillez saisir l'URL de l'image\033[1;91m : \033[1;93m")
+    nom_fichier = raw_input("\n\033[1;91m[\033[1;36m▶\033[1;91m] \033[1;97mEnregistrer sous le nom de\033[1;91m : \033[1;95m")
+    x = re.match(r'^(https:)[/][/]www.([^/]+[.])*instagram.com', url)
+
+    try:
+        if x:
+            demande_image = requests.get(url)
+            src = demande_image.content.decode('utf-8')
+            verifier_type = re.search(r'<meta name="medium" content=[\'"]?([^\'" >]+)', src)
+            verifier_type_fichier = verifier_type.group()
+            final = re.sub('<meta name="medium" content="', '', verifier_type_fichier)
+
+            if final == "image":
+                Street("\n\033[1;96mTéléchargement de l'image en cours...\033[1;97m\n")
+                extrait_lien_image = re.search(r'meta property="og:image" content=[\'"]?([^\'" >]+)', src)
+                image_lien = extrait_lien_image.group()
+                final = re.sub('meta property="og:image" content="', '', image_lien)
+                _response = requests.get(final).content
+                taille_fichier_demander = requests.get(final, stream=True)
+                taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                taille_qualite = 1024 
+                #temps_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                with open(nom_fichier + '.jpg', 'wb') as f:
+                    for data in taille_fichier_demander.iter_content(taille_qualite):
+                        t.update(len(data))
+                        f.write(data)
+                t.close()
+                print("\033[1;92mImage téléchargée avec succès")
+
+            if final == "video": 
+                dmd = raw_input("\033[1;97mVous essayez de télécharger une vidéo. Voulez-vous continuer? (O/n)\033[1;91m : \033[1;93m")
+                if dmd == "o" or dmd == "O":
+                    Street("\n\033[1;96mTéléchargement de la vidéo en qualité HD en cours...\033[1;97m\n")
+                    extrait_lien_video = re.search(r'meta property="og:video" content=[\'"]?([^\'" >]+)', src)
+                    video_lien = extrait_lien_video.group()
+                    final = re.sub('meta property="og:video" content="', '', video_lien)
+                    _response = requests.get(final).content
+                    taille_fichier_demander = requests.get(final, stream=True)
+                    taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                    taille_qualite = 1024 
+                    t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                    with open(nom_fichier + '.mp4', 'wb') as f:
+                        for data in taille_fichier_demander.iter_content(taille_qualite):
+                            t.update(len(data))
+                            f.write(data)
+                    t.close()
+                    print("\033[1;92mVidéo téléchargée avec succès")
+
+                elif dmd == "n" or dmd == "N":
+                    exit()  
+        else:
+            print("\033[1;91mL'URL saisie n'est pas une URL d'instagram")
+    except AttributeError:
+        print("\n\033[1;91mURL Inconnue")
+
+#Fonction pour télécharger la photo de profil des comptes Instagram
+def photo_profile_tel():
+    
+    url = raw_input("\n\033[1;91m[\033[1;36m▶\033[1;91m] Veuillez saisir l'URL du profil\033[1;91m : \033[1;93m")
+    nom_fichier = raw_input("\n\033[1;91m[\033[1;36m▶\033[1;91m] \033[1;97mEnregistrer sous le nom de\033[1;91m : \033[1;95m")
+    x = re.match(r'^(https:)[/][/]www.([^/]+[.])*instagram.com', url)
+    
+    if x:
+        Verifie_url1 = re.match(r'^(https:)[/][/]www.([^/]+[.])*instagram.com[/].*\?hl=[a-z-]{2,5}', url)
+        Verifie_url2 = re.match(r'^(https:)[/][/]www.([^/]+[.])*instagram.com$|^(https:)[/][/]www.([^/]+[.])*instagram.com/$', url)
+        Verifie_url3 = re.match(r'^(https:)[/][/]www.([^/]+[.])*instagram.com[/][a-zA-Z0-9_]{1,}$', url)
+        Verifie_url4 = re.match(r'^(https:)[/][/]www.([^/]+[.])*instagram.com[/][a-zA-Z0-9_]{1,}[/]$', url)
+
+        if Verifie_url3:
+            final_url = url + '/?__a=1'
+
+        if Verifie_url4:
+            final_url = url + '?__a=1'
+
+        if Verifie_url2:
+            final_url = print("\033[1;91mVeuillez saisir une URL liée à un profil")
+            exit()
+
+        if Verifie_url1:
+            alpha = Verifie_url1.group()
+            final_url = re.sub('\\?hl=[a-z-]{2,5}', '?__a=1', alpha)
+            
+    try:
+        if Verifie_url3 or Verifie_url4 or Verifie_url2 or Verifie_url1:
+            req = requests.get(final_url)
+            obtenir_status = requests.get(final_url).status_code
+            obtenir_contenu = req.content.decode('utf-8')
+
+            if obtenir_status == 200:
+                Street("\n\033[1;96mTéléchargement de la photo de profil en cours...\033[1;97m\n")
+                recherche_photo_profile = re.search(r'profile_pic_url_hd\":\"([^\'\" >]+)', obtenir_contenu)
+                photo_profile_lien = recherche_photo_profile.group()
+                photo_profile_final = re.sub('profile_pic_url_hd":"', '', photo_profile_lien)
+                taille_fichier_demander = requests.get(photo_profile_final, stream=True)
+                taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                taille_qualite = 1024 
+                #Temps_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                with open(nom_fichier + '.jpg', 'wb') as f:
+                    for data in taille_fichier_demander.iter_content(taille_qualite):
+                        t.update(len(data))
+                        f.write(data)
+                t.close()
+                print("\033[1;92mPhoto de profil téléchargée avec succès")
+
+    except Exception:
+        print("\n\t\033[1;91mErreur")
+
+if connection() == True:
+    try:
+        while True:  
+            print("\033[1;97m╔"+27*"═"+1*"═╗")
+	          print("\033[1;97m║ \033[1;91m[\033[1;96m1.\033[1;91m][48;5;0;38;5;197m Photo de proile \033[1;97m        ║")
+	          print("\033[1;97m║ \033[1;91m[\033[1;96m2.\033[1;91m][48;5;0;38;5;198m Image  / Video  \033[1;97m        ║")
+            print("\033[1;97m║ \033[1;91m[\033[1;96m3.\033[1;91m][48;5;0;38;5;198m Quitter         \033[1;97m        ║")
+	          print("\033[1;97m╚"+27*"═"+1*"═╝") 
+		        print("\033[1;97m║")
+            choix = raw_input("\033[1;97m╚═\033[1;31m▶[38;5;245m Mr [38;5;221mFaxel \033[1;31m▶▶▶ \033[1;33m")
+            try:
+                if choix =="1"  or choix =="01":
+                    photo_profile_tel()
+                elif choix =="2"  or choix =="02":
+                    telecharger_image_video()
+                if choix =="q"  or choix =="Q":
+                    sys.exit()
+                else:
+                    sys.exit()
+            except (KeyboardInterrupt):
+                 print("\n\t\033[1;91mProgramme Interrompu")
+    except(KeyboardInterrupt):
+        print("\n\t\033[1;91mProgramme Interrompu")
+else:
+    sys.exit()
+
+url = raw_input("\n\033[1;91m[\033[1;36m▶\033[1;91m] Veuillez saisir l'URL de l'image\033[1;91m : \033[1;93m")
+nom_fichier = raw_input("\n\033[1;91m[\033[1;36m▶\033[1;91m] \033[1;97mEnregistrer sous le nom de\033[1;91m : \033[1;95m")
