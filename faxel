@@ -1,0 +1,165 @@
+#!usr/bin/python3.8
+#coding=utf-8
+
+#Auteur: Faxel
+#Contact: t.me/Faxelh
+# Le credit pour ce code va a Mr Faxel
+# Si vous voulez prendre Le credit pour ce code Voyez Faster Axel.
+
+import os,sys,time,datetime,random,hashlib,re,threading,json,requests
+from datetime import datetime
+from tqdm import tqdm
+from time import sleep   
+
+# -Automatisation-#
+def Street(z):
+    for e in z + '\n':
+        sys.stdout.write(e)
+        sys.stdout.flush()
+        time.sleep(0.09)
+        
+try:
+	from requests import get, post
+	import json, os, subprocess as sp, sys
+except Exception as ff:
+	exit("\033[1;91m[\033[1;97mErreur provenance des Modules\033[1;91m]\033[1;93m %s"%(ff))
+if sys.version[0] in '2':
+
+   exit("\033[1;91m[\033[1;97mDesole\033[1;91m] \033[1;97mVous ne pouvez pas utiliser\033[1;95m python2\033[1;97m.\nVeuillez installer \033[1;96mpython3")
+os.system('clear')
+
+#███████╗██████╗     ██╗   ██╗██╗██████╗ ███████╗ ██████╗ 
+#██╔════╝██╔══██╗    ██║   ██║██║██╔══██╗██╔════╝██╔═══██╗
+#█████╗  ██████╔╝    ██║   ██║██║██║  ██║█████╗  ██║   ██║
+#██╔══╝  ██╔══██╗    ╚██╗ ██╔╝██║██║  ██║██╔══╝  ██║   ██║
+#██║     ██████╔╝     ╚████╔╝ ██║██████╔╝███████╗╚██████╔╝
+#╚═╝     ╚═════╝       ╚═══╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝ 
+
+logo = ("""
+\033[1;91m.-----------..----------.\033[1;96m.-------------..-------..------------..-----------..----------. 
+\033[1;91m| _________ || ______   |\033[1;96m| ____   ____ || _____ || ________   || _________ ||   ____  || 
+\033[1;91m||_   ___  ||||_   _ \  |\033[1;96m||_  _| |_  _||||_   _||||_   ___ `. |||_   ___  ||| .'    `.|| 
+\033[1;91m|  | |_  \_|||  | |_) | |\033[1;96m|  \ \   / /  ||  | |  ||  | |   `. \||  | |_  \_|||/  .--.  \| 
+\033[1;91m|  |  _|    ||  |  __'. |\033[1;96m|   \ \ / /   ||  | |  ||  | |    | |||  |  _|  _ ||| |    || | 
+\033[1;91m| _| |_     || _| |__) ||\033[1;96m|    \ ' /    || _| |_ || _| |___.' /|| _| |___/ |||\  `--'  /| 
+\033[1;91m||_____|    |||_______/ |\033[1;96m|     \_/     |||_____||||________.' |||_________||| `.____.'|| 
+\033[1;91m'-----------''----------'\033[1;96m'-------------''-------''------------''-----------''----------' 
+                                                           [Faxel]""")
+print(logo)
+def menu():
+    try:
+        if len(list) == 2:
+            if 0 in list and 1 in list:
+                choix_qualite = str(raw_input("\nEntrer 'HD' telecharger la video en qualité HD.\n\nEntrer 'SD' telecharger la video en qualité SD.\n: ")).upper()
+                
+                if choix_qualite=="HD" or choix_qualite=="hd":
+                
+                    print("\nTéléchargement de la vidéo en qualité HD... \n")
+                    video_url = re.search(r'hd_src:"(.+?)"', html).group(1)
+                    taille_fichier_demander = requests.get(video_url, stream=True)
+                    taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                    taille_qualite = 1024 
+                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                    with open(nom_fichier + '.mp4', 'wb') as f:
+                        for data in taille_fichier_damander.iter_content(taille_qualite):
+                            t.update(len(data))
+                            f.write(data)
+                    t.close()
+                    print("\nVidéo téléchargée avec succès.")    
+
+                elif choix_qualite=="SD" or choix_qualite=="sd":
+                
+                    print("\nTéléchargement de la vidéo en qualité SD... \n")
+                    video_url = re.search(r'sd_src:"(.+?)"', html).group(1)
+                    taille_fichier_demander = requests.get(video_url, stream=True)
+                    taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                    taille_qualite = 1024 
+                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                    with open(nom_fichier + '.mp4', 'wb') as f:
+                        for data in taille_fichier_demander.iter_content(taille_qualite):
+                            t.update(len(data))
+                            f.write(data)
+                    t.close()
+                    print("\nVidéo téléchargée avec succès.")   
+
+        if len(list) == 2:
+            if 1 in list and 2 in list:
+                renou_qualite = str(raw_input("\nDesoler! La vidéo n'est pas disponible en qualité HD. Souhaitez-vous le télécharger? ('Y' or 'N'): ")).upper()
+                
+                if renou_qualite == 'O' or renou_qualite == 'o':
+                    print("\nTéléchargement de la vidéo en qualité SD... \n")
+                    video_url = re.search(r'sd_src:"(.+?)"', html).group(1)
+                    taille_fichier_demander = requests.get(video_url, stream=True)
+                    taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                    taille_qualite = 1024 
+                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                    with open(nom_fichier + '.mp4', 'wb') as f:
+                        for data in taille_fichier_demander.iter_content(taille_qualite):
+                            t.update(len(data))
+                            f.write(data)
+                    t.close()
+                    print("\nVidéo téléchargée avec succès.")
+                    
+                elif renou_qualite == 'n' or renou_qualite == 'N':
+                    exit()
+
+        if len(list) == 2:
+            if 0 in list and 3 in list:
+                renou_qualite = str(raw_input("\nOups! La vidéo n'est pas disponible en qualité SD. Souhaitez-vous le télécharger? ('Y' or 'N'): \n")).upper()
+                
+                if renou_qualite == 'O' or renou_qualite == 'o':
+                    print("\nTéléchargement de la vidéo en qualité HD... \n")
+                    video_url = re.search(r'hd_src:"(.+?)"', html).group(1)
+                    taille_fichier_demander = requests.get(video_url, stream=True)
+                    taille_fichier = int(taille_fichier_demander.headers['Content-Length'])
+                    taille_qualite = 1024 
+                    nom_fichier = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M-%S')
+                    t=tqdm(total=taille_fichier, unit='B', unit_scale=True, desc=nom_fichier, ascii=True)
+                    with open(nom_fichier + '.mp4', 'wb') as f:
+                        for data in taille_fichier_demander.iter_content(taille_qualite):
+                            t.update(len(data))
+                            f.write(data)
+                    t.close()
+                    print("\nVidéo téléchargée avec succès.")               
+                
+                elif renou_qualite == 'n' or renou_qualite == 'N':
+                    exit()
+    except(KeyboardInterrupt):
+        print("\nProgramme Interrompu")
+
+try:
+    while True:
+        url =raw_input("\nEntrez l'URL de la vidéo Facebook : ")
+        x = re.match(r'^(https:|)[/][/]www.([^/]+[.])*facebook.com', url)
+
+        if x:
+            html = requests.get(url).content.decode('utf-8')
+        else:
+            print("\nPas lié au domaine Facebook.")
+            exit()
+
+        _qualityhd = re.search('hd_src:"https', html)
+        _qualitysd = re.search('sd_src:"https', html)
+        _hd = re.search('hd_src:null', html)
+        _sd = re.search('sd_src:null', html)
+
+        list = []
+        _thelist = [_qualityhd, _qualitysd, _hd, _sd]
+        for id,val in enumerate(_thelist):
+            if val != None:
+                list.append(id)
+
+        menu()
+        dmd = raw_input("\nVoulez vous télécharger une autre vidéo? (o or n): ").upper()
+        if dmd == str("o") or dmd == str("O")  :
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(logo)
+            continue
+        else:
+            break
+
+except KeyboardInterrupt:
+    print("\nProgramme Interrompu")
