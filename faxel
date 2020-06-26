@@ -52,11 +52,10 @@ def menu():
     try:
         if len(list) == 2:
             if 0 in list and 1 in list:
-		#print("\033[1;97m╔"+27*"═"+1*"═╗")
-		print "\033[1;97m╔'+27*'═'+1*'═╗"
+		print("\033[1;97m╔"+27*"═"+1*"═╗")
 		print("\033[1;97m║Entrer'[48;5;0;38;5;197mHD'\033[1;97mpour telecharger la video en qualité HD\033[1;97m║")
 		print("\033[1;97m║Entrer'[48;5;0;38;5;198mSD'\033[1;97mpour telecharger la video en qualité SD\033[1;97m║")
-		print "\033[1;97m╚'+27*'═'+1*'═╝"
+		print("\033[1;97m╚"+27*"═"+1*"═╝")
 		print("\033[1;97m║")
                 choix_qualite = str(raw_input("\033[1;97m╚═\033[1;31m▶[38;5;245m Mr [38;5;221mFaxel \033[1;31m▶▶▶ \033[1;33m")).upper()
                 
@@ -95,10 +94,10 @@ def menu():
 
         if len(list) == 2:
             if 1 in list and 2 in list:
-                print "\033[1;97m╔"+27*"═"+1*"═╗
+                print("\033[1;97m╔"+27*"═"+1*"═╗")
 		print("\033[1;97m║Oups! La vidéo n'est pas disponible en qualité SD.\033[1;97m║")
 		print("\033[1;97m║Souhaitez-vous le télécharger? (o/n).             \033[1;97m║")
-		print "\033[1;97m╚"+27*"═"+1*"═╝
+		print("\033[1;97m╚"+27*"═"+1*"═╝")
 		print("\033[1;97m║")
                 renou_qualite = str(raw_input("\033[1;97m╚═\033[1;31m▶[38;5;245m Mr [38;5;221mFaxel \033[1;31m▶▶▶ \033[1;33m")).upper()
          
@@ -122,10 +121,10 @@ def menu():
 
         if len(list) == 2:
             if 0 in list and 3 in list:
-		print "\033[1;97m╔"+27*"═"+1*"═╗
+		print("\033[1;97m╔"+27*"═"+1*"═╗")
 		print("\033[1;97m║Oups! La vidéo n'est pas disponible en qualité SD.\033[1;97m║")
 		print("\033[1;97m║Souhaitez-vous le télécharger? (o/n).             \033[1;97m║")
-		print "\033[1;97m╚"+27*"═"+1*"═╝
+		print("\033[1;97m╚"+27*"═"+1*"═╝")
 		print("\033[1;97m║")
                 renou_qualite = str(raw_input("\033[1;97m╚═\033[1;31m▶[38;5;245m Mr [38;5;221mFaxel \033[1;31m▶▶▶ \033[1;33m")).upper()
          
