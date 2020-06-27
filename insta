@@ -70,9 +70,9 @@ def telecharger_image():
                 print("\033[1;92mImage téléchargée avec succès")
 		menu()
 	    else:
-                 print("\033[1;91mL'URL saisie n'est pas une URL d'instagram")
-		 menu()
-     except AttributeError:
+                print("\033[1;91mL'URL saisie n'est pas une URL d'instagram")
+		menu()
+    except AttributeError:
           print("\n\033[1;91mURL Inconnue")	
 	  menu()
 		
