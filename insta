@@ -4,7 +4,7 @@
 #Auteur: Faxel
 #Contact: t.me/Faxelh
 # Le credit pour ce code va a Mr Faxel
-# Si vous voulez prendre Le credit pour ce code Voyez Faster Axel.
+# Vous pouvez recoder , mais toute fois mentionner le nom de l'auteur merci boss.
 
 import os,sys,time,datetime,random,hashlib,re,threading,json,requests
 from datetime import datetime
@@ -56,7 +56,7 @@ os.system('clear')
 Street("\033[1;96mVeuillez patientez le temps de verification robotique?")
 auto (logo2)
 auto("\033[1;96mTerminer\033[1;91m. \033[1;92mVerification reussie\033[1;97m, vous etes bien humain\n")
-print"[38;5;214m🇨🇮\033[1;97m I'm the person whom you can never judge. \033[1;92m 🇨🇮\n"
+print("[38;5;214m🇨🇮\033[1;97m I'm the person whom you can never judge. \033[1;92m 🇨🇮\n")
 raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
 ####################################################################################################
 #J'ai obtenu ça de https://stackoverflow.com/a/24460981
@@ -84,7 +84,8 @@ def Identifiant():
 \033[1;92mInspiration\033[1;91m :\033[1;97mProgressez chaque jour avec audace vers vos\nrêves, refusez les coups d'arrêt et rien ne pourra vous arrêter!!!
 \033[1;93m----------\033[1;91m#\033[1;97mL'AVENIR C'EST MAINTENANT\033[1;91m#\033[1;93m---------""")
                 Street("\033[1;92mUne pensée\033[1;97m a\033[1;91m <[38;5;112mZachary\033[1;97m,[38;5;112mMec\033[1;97m,[38;5;112mMael\033[1;97m,[38;5;112mDosso\033[1;97m,[38;5;112mSeverin\033[1;97m,[38;5;112mAnge Akobe,[38;5;112mMiss\033[1;96m Syntiche\033[1;91m>") 
-                raw_input("\n\033[1;91m[ [38;5;24mSuivant \033[1;91m]")
+                print("[38;5;214m🇨🇮\033[1;97m I'm the person whom you can never judge. \033[1;92m 🇨🇮\n")
+	        raw_input("\n\t\033[1;91m[ [38;5;24mSuivant \033[1;91m]")
 		Securiter()
 ####################################################################################################	
 def Securiter():
@@ -103,9 +104,11 @@ def Securiter():
 	            print("[38;5;214m<═════════════════\033[1;97mConnexion a[38;5;245m Mr \033[48;5;0;38;5;197mFaxel[38;5;214m═════════════════>")
 	            McTony()
 	            print("")
-                    print ("\033[1;91m[\033[1;92m●●\033[1;91m] \033[1;97mConnecté en tant que \033[1;96m"  +  Nomu )#Dev:Faxel
+                    print("\033[1;91m[\033[1;92m●●\033[1;91m] \033[1;97mConnecté en tant que \033[1;96m"  +  Nomu )#Dev:Faxel
 	            time.sleep(1)
                     loop = 'false'
+		    os.system('xdg-open https://t.me/Faxelh')
+		    os.system('clear')
 		    verifie()			
 	        else:
                     print ("\033[1;91m[\033[1;97mxx\033[1;91m] \033[1;93mMot de passe incorrect!!")
@@ -116,20 +119,19 @@ def Securiter():
                  os.system('xdg-open https://t.me/Faxelh')
 		 Securiter()
 ####################################################################################################
-def connection(url='http://www.google.com/', timeout=3):
+def connection(url='http://www.google.com/', timeout=5):
     try:
-        req = requests.get(url, timeout=timeout)
-        req.raise_for_status()
-	Street("\n\t\033[1;92mVerification de la connexion")
-	time.sleep(1.5)
-        print("\t\t\033[1;92mVous êtes connecté à Internet\n")
-	raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
+        verficateur_connexion = requests.get(url, timeout=timeout)
+        verficateur_connexion.raise_for_status()
+	Street("\033[1;91m[\033[1;92m●●\033[1;91m]          \033[1;97m\033[1;92mVerification de la connexion      \033[1;91m[\033[1;92m●●\033[1;91m]")
+        auto("\t\t\033[1;92mVous êtes connecté à Internet\n")
+	raw_input("\t\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
         return True
     except requests.HTTPError as e:
         print("Checking internet connection failed, status code {0}.".format(
         e.response.status_code))
     except requests.ConnectionError:
-        print("\t\t\033[1;91mVous n'êtes pas connecté à Internet.")
+        auto("\t\t\033[1;91mVous n'êtes pas connecté à Internet.")
     return False
 ####################################################################################################
 def verifie():
