@@ -115,7 +115,8 @@ def photo_profile_tel():
             final_url = url + '?__a=1'
 
         if Verifie_url2:
-            final_url = print("\033[1;91mVeuillez saisir une URL liée à un profil")
+            #final_url = 
+	    print("\033[1;91mVeuillez saisir une URL liée à un profil")
             exit()
 
         if Verifie_url1:
