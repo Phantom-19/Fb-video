@@ -1,5 +1,6 @@
-#!usr/bin/python2
+#!/usr/bin/python3
 #coding=utf-8
+
 
 #Auteur: Faxel
 #Contact: t.me/Faxelh
@@ -11,13 +12,25 @@ from datetime import datetime
 from tqdm import tqdm
 from time import sleep   
 
-
 # -Automatisation-#
 def Street(z):
     for e in z + '\n':
         sys.stdout.write(e)
         sys.stdout.flush()
         time.sleep(0.009)
+
+os.system('clear')
+
+try:
+	from requests import get, post
+	import json, os, subprocess as sp, sys
+except Exception as ff:
+	exit("\033[1;91m[\033[1;97mErreur provenance des Modules\033[1;91m]\033[1;93m %s"%(ff))
+if sys.version[0] in '2':
+   print("[38;5;214m●▬▬▬▬▬▬▬▬๑\033[1;97m●▬▬▬▬▬▬๑۩۩๑▬▬▬▬▬▬●●▬▬▬▬▬\033[1;32m▬▬▬▬๑۩۩๑▬▬▬▬▬▬●")  
+   exit("\033[1;91m[\033[1;97mDesole\033[1;91m] \033[1;97mVous ne pouvez pas utiliser\033[1;95m python2\033[1;97m.\nVeuillez lancer avec \033[1;96mpython3\n") 
+   
+
 
 logo = ("""\033[1;91m_______ ______   \033[1;96m _    _ _____ ______  _______  _____ \n\033[1;91m|______ |_____]  \033[1;96m  \  /    |   |     \ |______ |     |\n\033[1;91m|       |_____]  \033[1;96m   \/   __|__ |_____/ |______ |_____|
 \t[38;5;214m╔═╗╔═\033[1;97m╗═╗ ╦\033[1;92m╔═╗╦  \n\t[38;5;214m╠╣ ╠═\033[1;97m╣╔╩╦╝\033[1;92m║╣ ║  \n\t[38;5;214m╚  ╩ \033[1;97m╩╩ ╚═\033[1;92m╚═╝╩═╝\n\t\033[1;91m[[38;5;214mFaxel\033[1;91m][38;5;214m🇨🇮 \033[1;97mI'm the person whom you can never judge.\033[1;92m 🇨🇮""")
