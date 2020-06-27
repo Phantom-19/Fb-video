@@ -165,8 +165,8 @@ def menu():
             elif choix =="q"  or choix =="Q":
                 sys.exit()
             else:
+		raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
                 menu()
-		raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
      except(KeyboardInterrupt):
         print("\n\t\033[1;91mProgramme Interrompu")
         menu()
@@ -199,12 +199,14 @@ def telecharger_image():
                         f.write(data)
                 t.close()
                 print("\033[1;92mImage téléchargée avec succès")
+		raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
 		menu()
-		raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
+		
 	    else:
                 print("\033[1;91mL'URL saisie n'est pas une URL d'instagram")
+		raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
 		menu()
-		raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
+		
     except AttributeError:
           print("\n\033[1;91mURL Inconnue")	
 	  menu()
@@ -236,12 +238,12 @@ def telecharger_video():
                           f.write(data)
                   t.close()
                   print("\033[1;92mVidéo téléchargée avec succès")
+		  raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
                   menu()
-		  raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
 	    else:
                  print("\033[1;91mL'URL saisie n'est pas une URL d'instagram")
+		 raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
 		 menu()
-		 raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
     except AttributeError:
           print("\n\033[1;91mURL Inconnue")
 	  menu()
@@ -287,12 +289,12 @@ def photo_profile_tel():
                         f.write(data)
                 t.close()
                 print("\033[1;92mPhoto de profil téléchargée avec succès")
+                raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
                 menu()
-		raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
 	    else:
                  print("\033[1;91mL'URL saisie n'est pas une URL d'instagram")
-		 menu()	
-		 raw_input("\t\033[1;91m[[38;5;24mSuivant\033[1;91m]")
+		 raw_input("\t\033[1;91m[[38;5;24mRetour\033[1;91m]")
+                 menu()
     except Exception:
         print("\n\t\033[1;91mErreur")
 	menu()
