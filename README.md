@@ -20,26 +20,12 @@
 <a href="#"><img title="Langage" src="https://forthebadge.com/images/badges/made-with-python.svg"></a>
 </p>
 
-## `Modules`
-
-* `pip2 install argparse`
-* `pip2 install requests`
-* `pip2 install PySocks`
-* `pip2 install asyncio`
-* `pip2 install proxybroker`
-* `pip2 install selenium`
-* `pip2 install simplejson`
-
-
 ## `Installation Fb-video `:
 
 * `apt update`
 * `apt install git curl python2 python `
 * `git clone https://github.com/Phantom-19/Faxelh.git`
 * `cd Faxelh`
-* `pip2 install mechanize`
-* `pip2 install requests`
-
 ## ` Execution > ` `python2 faxel`
 
 ## ` NOM D'UTILISATEUR : Faxel    `
@@ -47,7 +33,7 @@
 
 ##  `Commande unique de cd Fb-video`:
 ```
-apt update ; apt install git curl -y ; git clone git clone https://github.com/Phantom-19/Fb-video.git ; cd Fb-video ; pip2 install mechanize ;   pip2 install requests ; python2 faxel
+apt update ; apt install git curl -y ; git clone git clone https://github.com/Phantom-19/Fb-video.git ; cd Fb-video ; python2 faxel
 ```
 
 
